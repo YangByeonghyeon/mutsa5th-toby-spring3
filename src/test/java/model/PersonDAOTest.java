@@ -1,3 +1,5 @@
+package model;
+
 import com.example.springbootgradle.study.model.PersonDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

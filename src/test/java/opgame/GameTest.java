@@ -3,13 +3,14 @@ package opgame;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.example.springbootgradle.study.opgame.service.OpGame;
+import com.example.springbootgradle.study.opgame.service.PlusOperatorLevelOne;
 import org.junit.jupiter.api.Test;
 
 public class GameTest {
 
     @Test
     public void test() {
-        OpGame game = new OpGame();
+        OpGame game = new OpGame(new PlusOperatorLevelOne());
         game.makeQuestion();
         String question = game.getQuestion();
 
@@ -28,9 +29,27 @@ public class GameTest {
 
     @Test
     public void testSumMax() {
-        int a = 0;
-        int b = 0;
-        assertTrue(a + b < 10);
+        int max = 10;
+        int a = (int)(Math.random() * max);
+        int b = (int)(Math.random() * (max - a));
+        System.out.printf("%d + %d = %d", a, b, a + b);
+        assertTrue(a + b < max);
+    }
+
+    @Test
+    public void testMinus() {
+        int max = 10;
+//        int a = (int)(Math.random() * max);
+//        int b = (int)(Math.random() * a);
+        int a = (int)(Math.random() * max);
+        int b = (int)(Math.random() * max);
+        if (a < b) {
+            int tmp = b;
+            a = b;
+            b = tmp;
+        }
+        System.out.printf("%d - %d = %d", a, b, a-b);
+        assertTrue(a - b >= 0);
     }
 }
 
